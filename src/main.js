@@ -48,3 +48,58 @@ let matchstr = "hello";
 console.log(str.startsWith(matchstr)); //true
 console.log(str.endsWith(matchstr)); // matchstr -> ^ ~~ = true
 console.log(str.includes(matchstr)); //true
+
+////////////////////////////////////////////////
+
+var data = [1,2, undefined, NaN, null, ""];
+for(var i=0; i<data.length; i++){console.log(i);}
+data.forEach(function(value){console.log("valueis",value);});
+//Array.prototype.getIndex = function(){};
+for(let idx in data){console.log(data[idx]);}
+for(let value of data){console.log(value);}
+var str1 = "hello world"
+for(let value of str1){console.log(value);}
+
+////////////////////////////////////////////////
+
+// spread operator - 배열의 복사
+//spread operator , 펼침연산자
+let pre = ["apple","orange", 100];
+let newData = [...pre]; 
+console.log(pre,newData); //같은 값 나옴
+console.log(pre===newData); //false
+
+////////////////////////////////////////////////
+
+//spread operator - 몇가지 활용
+//1
+let pre2 = [100,200,"hello",null];
+let newData2 = [0,1,2,3, ...pre ,4];
+
+//2
+function sum(a,b,c){
+    return a+b+c;
+}
+pre2 = [100,200,300];
+sum.apply(null, pre);
+sum(...pre2);
+
+////////////////////////////////////////////////
+
+//ES6 from 메서드로 진짜 배열 만들기
+function addMark(){
+    let newData3=[];
+    for(let i=0; i<arguments.length; i++){
+        newData3.push(arguments[i]+"!");
+    }
+
+    let newArray = Array.from(arguments); //아래 오류 없어짐
+    //arguments는 배열이 아니기 때문에 아래 코드는 오류가 난다.
+    newData3 = arguments.map(function(value){
+        return value+"!";
+    });
+
+    console.log(newData3);  
+}
+
+addMark(1,2,3,4,5);
