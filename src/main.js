@@ -22,7 +22,6 @@ for(let i=0; i<list.length; i++){
 
 function home2(){
     const homename="my house";
-    homename = "your house";
     console.log(homename);
 }
 
@@ -42,3 +41,10 @@ const list2 = ["apple","orange","watermelon"];
 list3 = [].concat(list2, "banana");
 console.log(list2 === list3);
 
+////////////////////////////////////////////////
+
+let str = "hello world ! ^^ ~~";
+let matchstr = "hello";
+console.log(str.startsWith(matchstr)); //true
+console.log(str.endsWith(matchstr)); // matchstr -> ^ ~~ = true
+console.log(str.includes(matchstr)); //true
