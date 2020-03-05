@@ -185,3 +185,10 @@ var news = [
 
 let[, {title,imgurl}] = news;
 console.log(imgurl);
+
+function getNewsList([,{newslist}]){
+    console.log(newslist);
+}
+
+getNewsList(news);
+
