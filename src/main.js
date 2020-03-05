@@ -87,19 +87,46 @@ sum(...pre2);
 ////////////////////////////////////////////////
 
 //ES6 from 메서드로 진짜 배열 만들기
-function addMark(){
-    let newData3=[];
-    for(let i=0; i<arguments.length; i++){
-        newData3.push(arguments[i]+"!");
-    }
+// function addMark(){
+//     let newData3=[];
+//     for(let i=0; i<arguments.length; i++){
+//         newData3.push(arguments[i]+"!");
+//     }
 
-    let newArray = Array.from(arguments); //아래 오류 없어짐
-    //arguments는 배열이 아니기 때문에 아래 코드는 오류가 난다.
-    newData3 = arguments.map(function(value){
-        return value+"!";
-    });
+//     let newArray = Array.from(arguments); //아래 오류 없어짐
+//     //arguments는 배열이 아니기 때문에 아래 코드는 오류가 난다.
+//     newData3 = arguments.map(function(value){
+//         return value+"!";
+//     });
 
-    console.log(newData3);  
+//     console.log(newData3);  
+// }
+
+// addMark(1,2,3,4,5);
+
+////////////////////////////////////////////////
+
+//Object 간단하게 객체생성하기
+const name1 = "crong";
+const age1 = 33;
+
+const obj = {
+    name : name1,
+    age : age1
 }
 
-addMark(1,2,3,4,5);
+console.log(obj);
+
+////////////////////////////////////////////////
+
+function getObj(){
+    const name2 = "crong"
+    const getName = function(){return name2;}
+    const setName = function(newname){name2=newname;}
+    const printName = function(){console.log(name);}
+    return {getName:getName,setName:setName}
+    //return {getName,setName} -> 위랑 똑같음
+}
+
+var obj12 = getObj();
+console.log(obj12);
