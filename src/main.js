@@ -141,3 +141,47 @@ console.log(jisu, jung); //crong, jk, crong, js=k
 //let jung = data[2];
 
 ////////////////////////////////////////////////
+
+//destructuring obj
+
+let obj1234 = {
+    name : "crong",
+    address : "korean",
+    age : 10
+}
+
+//let {name, age} = obj1234;
+//console.log(name,age);
+
+let{name:myName, age:myAge} = obj1234;
+console.log(myName,myAge);
+
+////////////////////////////////////////////////
+
+var news = [
+    {
+        "title" : "sbs",
+        "imgurl" : "https://www.inflearn.com/course/es6-%EA%B0%95%EC%A2%8C-%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8/lecture/6994",
+        "newslist":[
+            "aaaaaa",
+            "bbbbbb",
+            "cccccc",
+        ]
+    },
+    {
+        "title" : "mbc",
+        "imgurl" : "https://www.inflearn.com/course/es6-%EA%B0%95%EC%A2%8C-%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8/lecture/6994",
+        "newslist":[
+            "aaaaaa",
+            "bbbbbb",
+            "cccccc",
+        ]
+    }
+];
+
+// let [,mbc] = news;
+// let {title, imgurl} = mbc;
+// console.log(title,imgurl);
+
+let[, {title,imgurl}] = news;
+console.log(imgurl);
