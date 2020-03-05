@@ -130,3 +130,14 @@ function getObj(){
 
 var obj12 = getObj();
 console.log(obj12);
+
+////////////////////////////////////////////////
+
+//destructuring
+let data12 = ["crong", "honux", "jk", "jinny"];
+let [jisu,,,jung] = data12;
+console.log(jisu, jung); //crong, jk, crong, js=k
+//let jisu = data[0];
+//let jung = data[2];
+
+////////////////////////////////////////////////
