@@ -1,41 +1,37 @@
-let mySet = new Set();
-// console.log(toString.call(mySer));
-//set : 중복없이 유일한 값을 저장하려고 할때, 이미 존재하는지 체크할 때 유용.=
-//객체형태를 중복없이 저장하려고 할 때 유용하다.
+//Array -> set, Obj -> map
 
-mySet.add("crong");
-mySet.add("hary");
-mySet.add("crong");
+//map은 key/value 구조
 
-if(mySet.has("crong")); //crong이 있는지 없는지 확인 -> true
+let wm = new WeakMap();
+let myfun = function(){};
+//이 함수가 얼마나 실행되었지? 를 알려고 할 때
 
-mySet.forEach(function(v){
-    console.log(v); //3가지의 값을 넣었지만 crong, hary 2개만 나옴
-});
+// wm.set(myfun,0);
+//console.log(wm); // obj
 
-mySet.delete("crong");
-mySet.forEach(function(v){
-    console.log(v);
-}); //hary만 나옴
+let count = 0;
+for(let i=0; i<10; i++){
+    count = wm.get(myfun);//get value
+    count++;
+    wm.set(myfun,count);
+}
 
-////////////////////////////////////////////////
-//weakset
-//참조를 가지고 있는 개체만 저장이 가능하다.
-let arr = [1,2,3,4];
-let arr2 = [5,6,7,8];
-let obj = {arr, arr2};
-let ws = new WeakSet();
+console.log(wm.get(myfun));
 
-ws.add(arr);
-ws.add(arr2);
-ws.add(obj);
+//////////////////////////////////////////
 
-arr = null;
+const wm = new WeakMap();
 
-//ws.add(111); //iNvaild value error
-//ws.add("111"); //iNvaild value error
-// ws.add(null); //iNvaild value error
-//ws.add(function(){}) //잘 나옴
+function Area(height, width){
+    wm.set(this,{height,width});
+};
 
-console.log(ws); //잘 나옴
-console.log(ws.has(arr),ws.has(arr2)); //false,true
+Area.prototype.getArea = function(){
+    const {height, width} = wm.get(this);
+    return height * width;
+}
+
+let myarea = new Area(10,20);
+console.log(myarea.getArea()); //200
+console.log(myarea.height); //10
+
