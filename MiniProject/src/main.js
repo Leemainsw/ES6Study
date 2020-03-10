@@ -1,12 +1,39 @@
 class Blog {
 	constructor() {
 		//const dataURL = "https://tlhm20eugk.execute-api.ap-northeast-2.amazonaws.com/prod/lambda_get_blog_info";
-		const dataURL = "/data/data.json";
-		this.setInitData(dataURL);
+        const dataURL = "/data/data.json";
+        this.setInitVariables();
+        this.registerEvents();
+        this.setInitData(dataURL);
+        this.likedSet = new Set();
+        
+    }	
+
+    setInitVariables() {
+		this.blogList = document.querySelector(".blogList > ul");
 	}
 
+    registerEvents(){
+        const startBtn = document.querySelector(".start");
+        const dataURL = "/data/data.json";
+        const blogList = document.querySelector(".blogList > ul");
+
+        startBtn.addEventListener("click", () => {
+            this.setInitData(dataURL);
+        });
+
+        this.blogList.addEventListener("click", ({target}) => {
+            const targetClassName = target.className; 
+            console.log(targetClassName);
+            //className === like => 찜하기 내 찜목록에 새로운 블로그 제목을 추가한다? 
+            if(targetClassName !== "like") return;
+            const postTitle = target.previousElementSibling.textContent;
+            this.likedSet.add(postTitle); 
+        });
+    }
+
 	setInitData(dataURL) {
-		this.getData(dataURL, this.insertPosts);
+		this.getData(dataURL, this.insertPosts.bind(this));
 	}
 
 	getData(dataURL, fn) {
@@ -21,9 +48,13 @@ class Blog {
 	}
 
 	insertPosts(list) { //블로그 리스트  ul에 innerHTML로 넣어주려고
-		const ul = document.querySelector(".blogList > ul");
+
 		list.forEach((v) => {
-			ul.innerHTML += `<li> <a href=${v.link}> ${v.title} </a></li>`;
+            this.blogList.innerHTML += `
+            <li> 
+                <a href=${v.link}> ${v.title}</a>
+                <div class="like">찜하기</div>
+            </li>`;
 		})
 	}
 }
