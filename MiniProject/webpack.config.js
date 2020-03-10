@@ -1,4 +1,5 @@
 var path = require('path');
+var glob = require('glob');
 
 module.exports = {
     entry: "./src/index.js",
@@ -9,24 +10,18 @@ module.exports = {
         publicPath: '/dist'
     },
     module: {
-        rules: [{
+        rules: [
+            {
+                test: /\.css/,
+                use: ['style-loader', 'css-loader']
+            },
+            {
             test: /\.js$/,
+            exclude: /(node_modules|bower_components)/,
             include: path.resolve(__dirname, 'src'),
             use:{
                 loader : 'babel-loader',
-                options : {
-                    presets: [
-                        ['env', {
-                        'targets':{
-                            "browsers": ["last 2 versions", "ie 9"]
-                        },
-                        'debug':true
-                        }]
-                    ],
-                    plugins: [
-                        '@babel/plugin-transform-runtime',
-                    ]
-                }
+                options: {presets:['env']}
             }
         }]
     }

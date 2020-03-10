@@ -94,7 +94,19 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval(" import blog from './main.js';\n const myblog = new blog();\n\n\n# sourceURL=webpack:///./src/index.js?");
+eval("\n\nvar _main = __webpack_require__(/*! ./main.js */ \"./src/main.js\");\n\nvar _main2 = _interopRequireDefault(_main);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\n//# sourceURL=webpack:///./src/index.js?");
+
+/***/ }),
+
+/***/ "./src/main.js":
+/*!*********************!*\
+  !*** ./src/main.js ***!
+  \*********************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n    value: true\n});\n\nfunction _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError(\"Cannot call a class as a function\"); } }\n\nvar Blog = function Blog() {\n    _classCallCheck(this, Blog);\n\n    console.log('Blog is started!');\n};\n\nexports.default = Blog;\n\n//# sourceURL=webpack:///./src/main.js?");
 
 /***/ })
 

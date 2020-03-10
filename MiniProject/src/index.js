@@ -1,3 +1,3 @@
 import blog from './main.js';
 
-// const myblog = new blog();
+const myblog = new blog();
