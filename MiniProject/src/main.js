@@ -20,7 +20,7 @@ class Blog {
 		oReq.send();
 	}
 
-	insertPosts(list) {
+	insertPosts(list) { //블로그 리스트  ul에 innerHTML로 넣어주려고
 		const ul = document.querySelector(".blogList > ul");
 		list.forEach((v) => {
 			ul.innerHTML += `<li> <a href=${v.link}> ${v.title} </a></li>`;
