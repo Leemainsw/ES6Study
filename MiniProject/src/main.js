@@ -24,12 +24,38 @@ class Blog {
 
         this.blogList.addEventListener("click", ({target}) => {
             const targetClassName = target.className; 
-            console.log(targetClassName);
             //className === like => 찜하기 내 찜목록에 새로운 블로그 제목을 추가한다? 
-            if(targetClassName !== "like") return;
             const postTitle = target.previousElementSibling.textContent;
-            this.likedSet.add(postTitle); 
+
+            if(targetClassName !== "like" && targetClassName !== "unlike") return;
+   
+            //찜취소로 클릭하면 찜하기로 벼ㄴ경하고 찜목록 제거하고 찜목록뷰를 랜더링한다.
+			if(targetClassName === "unlike") {
+				target.className = "like";
+				target.innerText = "찜하기";
+				this.likedSet.delete(postTitle);
+			} else {
+				target.className = "unlike";
+				target.innerText = "찜취소";
+				this.likedSet.add(postTitle);
+            }
+
+            //내 찜목록 vue에 추가
+            this.updateLikedList();
+
+            //dispatcher.emit("change_like_list", {'titile':this.likedSer});
         });
+    }
+
+    updateLikedList(){
+        const ul = document.querySelector(".like-list > ul");
+        let likedSum = "";
+
+        //li태그에 찜 리스트를 넣고 한 번에 innerHTML을 사용한다
+        this.likedSet.forEach ( (v) => {
+			likedSum += `<li> ${v} </li>`;
+		})
+		ul.innerHTML = likedSum;
     }
 
 	setInitData(dataURL) {
