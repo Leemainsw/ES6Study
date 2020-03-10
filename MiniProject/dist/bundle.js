@@ -77,7 +77,7 @@
 /******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
 /******/
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "";
+/******/ 	__webpack_require__.p = "/dist";
 /******/
 /******/
 /******/ 	// Load entry module and return exports
@@ -94,7 +94,7 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nconsole.log('a');\n\n//# sourceURL=webpack:///./src/index.js?");
+eval(" import blog from './main.js';\n const myblog = new blog();\n\n\n# sourceURL=webpack:///./src/index.js?");
 
 /***/ })
 
